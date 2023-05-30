@@ -1,13 +1,13 @@
 import React from 'react';
 
-export const GuessInput = () => {
+export const GuessInput = ({ updateGuesses }) => {
   const [currentWord, setCurrentWord] = React.useState('');
   let guess = '';
 
   const handleSubmit = (event) => {
     event.preventDefault();
     guess = currentWord;
-    console.log({ guess });
+    updateGuesses(guess);
     setCurrentWord('');
   };
 
