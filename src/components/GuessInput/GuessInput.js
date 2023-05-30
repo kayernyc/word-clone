@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const GuessInput = ({ updateGuesses }) => {
+export const GuessInput = ({ updateGuesses, playerDone }) => {
   const [currentWord, setCurrentWord] = React.useState('');
   let guess = '';
 
@@ -15,12 +15,13 @@ export const GuessInput = ({ updateGuesses }) => {
     <form className="guess-input-wrapper" onSubmit={handleSubmit}>
       <label htmlFor="guess-input">Enter guess:</label>
       <input
-        onChange={(event) => {
-          setCurrentWord(event.target.value.toUpperCase());
-        }}
+        disabled={playerDone}
         id="guess-input"
         maxLength={5}
         minLength={5}
+        onChange={(event) => {
+          setCurrentWord(event.target.value.toUpperCase());
+        }}
         pattern={'[a-zA-Z]{5}'}
         type="text"
         value={currentWord}
